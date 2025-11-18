@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Descarte de Resíduos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Descarte de Resíduos - Objetivos de Desenvolvimento Sustentável (ODS)</h1>
+    <nav>
+      <button type="button" onclick="mostrarTela('telaPonto')">Cadastro de Ponto</button>
+      <button type="button" onclick="mostrarTela('telaDescarte')">Registro de Descarte</button>
+      <button type="button" onclick="mostrarTela('telaHistorico')">Histórico</button>
+      <button type="button" onclick="mostrarTela('telaRelatorio')">Relatórios</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Tela de cadastro de ponto de descarte -->
+    <section id="telaPonto" class="tela ativa">
+      <h2>Cadastro de Ponto de Descarte</h2>
+
+      <form id="formPonto" onsubmit="enviarPonto(event)">
+        <div class="campo">
+          <label for="pontoNome">Nome do local</label>
+          <input type="text" id="pontoNome" required>
+        </div>
+
+        <div class="campo">
+          <label for="pontoBairro">Bairro</label>
+          <input type="text" id="pontoBairro" required>
+        </div>
+
+        <div class="campo">
+          <span>Tipo de local</span>
+          <label><input type="radio" name="pontoTipo" value="publico" checked> Público</label>
+          <label><input type="radio" name="pontoTipo" value="privado"> Privado</label>
+        </div>
+
+        <div class="campo">
+          <label for="pontoCategoria">Categoria do resíduo</label>
+          <select id="pontoCategoria" required>
+            <option value="plastico">Plástico</option>
+            <option value="papel">Papel</option>
+            <option value="vidro">Vidro</option>
+            <option value="metal">Metal</option>
+            <option value="organico">Orgânico</option>
+          </select>
+        </div>
+
+        <div class="campo grupo-lat-lon">
+          <div>
+            <label for="pontoLat">Latitude</label>
+            <input type="number" id="pontoLat" step="0.000001" required>
+          </div>
+          <div>
+            <label for="pontoLon">Longitude</label>
+            <input type="number" id="pontoLon" step="0.000001" required>
+          </div>
+        </div>
+
+        <button type="submit">Cadastrar Ponto</button>
+      </form>
+
+      <div id="listaPontosResumo"></div>
+    </section>
+
+    <!-- 2. Tela de registro de descarte por usuário -->
+    <section id="telaDescarte" class="tela">
+      <h2>Registro de Descarte por Usuário</h2>
+
+      <form id="formDescarte" onsubmit="enviarDescarte(event)">
+        <div class="campo">
+          <label for="descUsuario">Nome do usuário</label>
+          <input type="text" id="descUsuario" required>
+        </div>
+
+        <div class="campo">
+          <label for="descPonto">Ponto de descarte</label>
+          <select id="descPonto" required>
+            <option value="">Selecione um ponto</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="descTipoResiduo">Tipo de resíduo</label>
+          <select id="descTipoResiduo" required>
+            <option value="">Selecione</option>
+            <option value="plastico">Plástico</option>
+            <option value="papel">Papel</option>
+            <option value="vidro">Vidro</option>
+            <option value="metal">Metal</option>
+            <option value="organico">Orgânico</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="descData">Data do descarte</label>
+          <input type="date" id="descData" required>
+        </div>
+
+        <button type="submit">Registrar Descarte</button>
+      </form>
+    </section>
+
+    <!-- 3. Tela de consulta de histórico de descartes -->
+    <section id="telaHistorico" class="tela">
+      <h2>Consulta de Histórico de Descartes</h2>
+
+      <form id="formFiltroHistorico" onsubmit="buscarHistorico(event)">
+        <div class="campo">
+          <label for="filtUsuario">Nome do usuário</label>
+          <input type="text" id="filtUsuario">
+        </div>
+
+        <div class="campo">
+          <label for="filtTipoResiduo">Tipo de resíduo</label>
+          <select id="filtTipoResiduo">
+            <option value="">Todos</option>
+            <option value="plastico">Plástico</option>
+            <option value="papel">Papel</option>
+            <option value="vidro">Vidro</option>
+            <option value="metal">Metal</option>
+            <option value="organico">Orgânico</option>
+          </select>
+        </div>
+
+        <div class="campo grupo-lat-lon">
+          <div>
+            <label for="filtDataInicio">Data (início)</label>
+            <input type="date" id="filtDataInicio">
+          </div>
+          <div>
+            <label for="filtDataFim">Data (fim)</label>
+            <input type="date" id="filtDataFim">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="filtPonto">Ponto de descarte</label>
+          <select id="filtPonto">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div id="resultadoHistorico"></div>
+    </section>
+
+    <!-- 4. Tela de relatórios -->
+    <section id="telaRelatorio" class="tela">
+      <h2>Relatório Resumido</h2>
+
+      <button type="button" onclick="carregarRelatorio()">Atualizar Relatório</button>
+
+      <div id="relatorioContainer" class="relatorio">
+        <p><strong>Local com maior número de registros:</strong> <span id="relLocal"></span></p>
+        <p><strong>Tipo de resíduo mais descartado:</strong> <span id="relTipoResiduo"></span></p>
+        <p><strong>Média de descartes por dia (últimos 30 dias):</strong> <span id="relMediaDia"></span></p>
+        <p><strong>Número total de usuários cadastrados:</strong> <span id="relTotalUsuarios"></span></p>
+        <p><strong>Número total de pontos de descarte:</strong> <span id="relTotalPontos"></span></p>
+        <p><strong>Variação percentual mensal:</strong> <span id="relVariacaoMensal"></span></p>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

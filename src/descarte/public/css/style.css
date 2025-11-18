@@ -1,0 +1,199 @@
+:root {
+  --desc-red: #c8102e;
+  --desc-red-dark: #a10d24;
+  --desc-grey-bar: #f1f1f1;
+  --desc-grey-border: #d6d6d6;
+  --desc-bg: #f7f7f7;
+  --desc-text: #333333;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background-color: var(--desc-bg);
+  color: var(--desc-text);
+}
+
+/* HEADER – faixa vermelha */
+header {
+  background-color: var(--desc-red);
+  color: #ffffff;
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* NAV – barra cinza clara com botões tipo “abas” */
+nav {
+  margin-top: 10px;
+  background-color: var(--desc-grey-bar);
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--desc-grey-border);
+}
+
+nav button {
+  margin: 0 6px 4px 0;
+  padding: 6px 14px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: #444;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+nav button:hover {
+  background-color: #ffffff;
+  border-color: var(--desc-grey-border);
+  color: #000000;
+}
+
+/* MAIN – centralizado */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* TELAS – blocos brancos como “cards” grandes */
+.tela {
+  display: none;
+  background-color: #ffffff;
+  padding: 18px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--desc-grey-border);
+  margin-top: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tela.ativa {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* CAMPOS DE FORMULÁRIO */
+.campo {
+  margin-bottom: 10px;
+}
+
+.campo label,
+.campo span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="date"],
+.campo select {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--desc-grey-border);
+  font-size: 0.9rem;
+  background-color: #ffffff;
+}
+
+.campo input[type="checkbox"],
+.campo input[type="radio"] {
+  margin-right: 4px;
+}
+
+/* Grupo lat/lon lado a lado */
+.grupo-lat-lon {
+  display: flex;
+  gap: 10px;
+}
+
+.grupo-lat-lon > div {
+  flex: 1;
+}
+
+/* BOTÕES PRINCIPAIS */
+button[type="submit"],
+button[type="button"] {
+  padding: 7px 18px;
+  border-radius: 16px;
+  border: none;
+  background-color: var(--desc-red);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: var(--desc-red-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* LISTA DE PONTOS – cards */
+#listaPontosResumo {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.card-ponto {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--desc-grey-border);
+  font-size: 0.88rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* HISTÓRICO – tabela limpa */
+#resultadoHistorico table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+
+#resultadoHistorico th,
+#resultadoHistorico td {
+  border: 1px solid var(--desc-grey-border);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+#resultadoHistorico th {
+  background-color: #eeeeee;
+  font-weight: 600;
+}
+
+#resultadoHistorico tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+/* RELATÓRIO – texto simples, alinhado */
+.relatorio p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+}

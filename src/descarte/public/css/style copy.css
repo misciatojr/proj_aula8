@@ -1,0 +1,148 @@
+:root {
+  --bg: #f4f4f4;
+  --card-bg: #ffffff;
+  --primary: #2c3e50;
+  --accent: #2980b9;
+  --border: #cccccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+}
+
+header {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+}
+
+nav button {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 6px 12px;
+  border: none;
+  background-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+nav button:hover {
+  opacity: 0.9;
+}
+
+main {
+  padding: 20px;
+}
+
+.tela {
+  display: none;
+  background-color: var(--card-bg);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.tela.ativa {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.campo {
+  margin-bottom: 10px;
+}
+
+.campo label,
+.campo span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="date"],
+.campo select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.campo input[type="checkbox"],
+.campo input[type="radio"] {
+  margin-right: 4px;
+}
+
+.grupo-lat-lon {
+  display: flex;
+  gap: 10px;
+}
+
+.grupo-lat-lon>div {
+  flex: 1;
+}
+
+button[type="submit"],
+button[type="button"] {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  opacity: 0.9;
+}
+
+#listaPontosResumo {
+  margin-top: 15px;
+}
+
+.card-ponto {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+#resultadoHistorico table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#resultadoHistorico th,
+#resultadoHistorico td {
+  border: 1px solid var(--border);
+  padding: 6px;
+  text-align: left;
+}
+
+#resultadoHistorico th {
+  background-color: #eee;
+}
+
+.relatorio p {
+  margin: 6px 0;
+}
