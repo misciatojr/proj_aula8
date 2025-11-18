@@ -22,7 +22,7 @@ Integração entre Back-End em NestJS (API REST com MongoDB) e Front-End puro (H
 ## Estrutura do Projeto
 - `src/` – Código-fonte (ponto, descarte, controllers, services, modules)
 - `test/` – Estrutura padrão do Nest para testes
-- `public/` – Front-end (HTML, CSS, JS)
+- `src/descarte/public/` – Front-end (HTML, CSS, JS)
 
 ## Como executar o Back-End
 ```bash
